@@ -338,7 +338,7 @@ class Group {
   }
 }
 
-export class Playground {
+/* export */ class Playground {
   constructor(container, screen, ratios, screenRatios, shapes, gameOver, score) {
     this.container = container
     this.screen = screen

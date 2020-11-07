@@ -7,7 +7,8 @@
  * 
  */
 
-export default {
+// export default {
+  const shapes = { 
   line: {
     pos: {
       pos1: [

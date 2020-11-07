@@ -12,8 +12,8 @@
  */
 
 
-import shapes from './internals/shapes.js'
-import {Playground} from './internals/engine.js'
+// import shapes from './internals/shapes.js'
+// import {Playground} from './internals/engine.js'
 
 //CONSTANTS:
 
@@ -122,16 +122,16 @@ import {Playground} from './internals/engine.js'
     if (scoreNow > parseFloat(scores.today)) {
       let now = formatDate()
       if (now !== scores.today[1]) {
-        scores.today = [scoreNow, now]
+        // scores.today = [scoreNow, now]
       }
     }
     if (scoreNow > parseFloat(scores.ever)) {
-      scores.ever = scoreNow
+      // scores.ever = scoreNow
     }
     localStorage.setItem('scoresTetrisGame', JSON.stringify(scores))
 
-    document.getElementById('today').innerHTML = scores.today
-    document.getElementById('ever').innerHTML = scores.ever
+    // document.getElementById('today').innerHTML = scores.today[0]
+    // document.getElementById('ever').innerHTML = scores.ever
   }
 
   const raiseFromTheDust = (self) => {
