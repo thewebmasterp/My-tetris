@@ -1,8 +1,8 @@
 {
-  "name": "tetris-game",
-  "version": "1.0.0",
-  "description": "my poor struggle to create a tetris game :DD",
-  "main": "index.html",
+  "name": "play-tetris-game",
+  "version": "0.0.1",
+  "description": "A tetris game I built for fun",
+  "main": "internals/engine.js",
   "dependencies": {
     "node-sass": "^4.14.1"
   },
@@ -11,6 +11,24 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "scss": "node-sass --watch scss -o css"
   },
-  "author": "webmaster_project / thewebmasterp / Zdravko Dimov (All names are mine)",
-  "license": "ISC"
+  "author": "Zdravko Dimov (thewebmasterp / webmaster_project)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thewebmasterp/My-tetris.git"
+  },
+  "keywords": [
+    "tetris",
+    "game",
+    "tetrisgame",
+    "html5game",
+    "mytetrisgame",
+    "mytetris",
+    "thewebmasterp",
+    "webmaster_project"
+  ],
+  "bugs": {
+    "url": "https://github.com/thewebmasterp/My-tetris/issues"
+  },
+  "homepage": "https://github.com/thewebmasterp/My-tetris#readme"
 }
