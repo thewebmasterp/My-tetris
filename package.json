@@ -1,0 +1,16 @@
+{
+  "name": "tetris-game",
+  "version": "1.0.0",
+  "description": "my poor struggle to create a tetris game :DD",
+  "main": "index.html",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "author": "webmaster_project / thewebmasterp / Zdravko Dimov (All names are mine)",
+  "license": "ISC"
+}

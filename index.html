@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tetris</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Turret+Road:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+
+
+  
+  <meta data-source="https://www.vecteezy.com/free-vector/vector" data-attribute="Vector Vectors by Vecteezy">
+</head>
+<body>
+  <div id="tetris">
+    <!-- <h1 id="heading">Tetris</h1>-->
+    <div id="heading">
+    </div>
+    <div id="playground">
+      <svg width="100%" height="100%">
+      </svg>
+    </div>
+    <div class="box" id="screen">
+      <svg width="100%" height="100%">
+      </svg>
+    </div>
+    <div class="box" id="scores">
+      <div class="pointInTime">
+        <h3 class="when">now</h1>
+        <div class="score">
+          <span class="label">score</span>
+          <span class="data scoreNow">0</span>
+        </div>
+      </div>
+      <div class="pointInTime">
+        <h3 class="when">best today</h1>
+        <div class="score">
+          <span class="label">score</span>
+          <span id="today" class="data">0</span>
+        </div>
+      </div>
+      <div class="pointInTime">
+        <h3 class="when">best ever</h3></h1>
+        <div class="score">
+          <span class="label">score</span>
+          <span id="ever" class="data">0</span>
+        </div>
+      </div>
+    </div>
+    <div class="box" id="controls">
+      <button id="left" class="btn"></button>
+      <button id="down" class="btn"></button>
+      <button id="right" class="btn"></button>
+      <button id="flip" class="btn"></button>
+    </div>
+    <div id="overlay">
+      <div id="gameOver">
+        <h1 id="badNews">Game Over</h1>
+        <p>Score: <span class="scoreNow">0</span><span id="record"></span></p>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="controller.js"></script>
+</body>
+</html>
