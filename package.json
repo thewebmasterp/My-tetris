@@ -1,6 +1,6 @@
 {
   "name": "play-tetris-game",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tetris game I built for fun",
   "main": "internals/engine.js",
   "dependencies": {

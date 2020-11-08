@@ -378,7 +378,7 @@ class Group {
       .append('image')
         .attr('height', pixelHeight)
         .attr('width', pixelWidth)
-        .attr('href', `pixels/${color}.png`)
+        .attr('href', `https://cdn.jsdelivr.net/npm/play-tetris-game@latest/pixels/${color}.png`)
     }
 
     let i, j
