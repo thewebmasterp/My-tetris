@@ -231,6 +231,11 @@
 
   let gravity = setInterval(fall, currSpeed)
 
+  window.addEventListener('resize', () => { 
+    window.location.reload()
+  })
+
+
 
   //Fun fact: the whole file is written without a single semi-colon.
 
