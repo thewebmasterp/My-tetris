@@ -2,8 +2,8 @@
  * Author: Zdravko Dimov (thewebmasterp / webmaster_project)
  * Country: Bulgaria
  * Descrption: This file is the user of engine.js (the engine). It utilizes all the
- * class defined there and feeds them with the canvas upon which, 'he' (the engine) will render
- * all the complex position of cubes (svg + d3.js), make it all dynamic and responsive.
+ * class defined there and feeds them with the canvas upon which the engine will render
+ * all the complex position of cubes (svg + d3.js), making it all dynamic and responsive.
  * 
  * This is also the file I encourage tweaking and playing with, even if you can't code!
  * Try chaing the values of the constants at the beginning of the file and the ones I am sure
@@ -109,26 +109,26 @@
   //ever day in the next 2-3 days to see if there're potential bugs I could
   //fix. Thanks for the understanding! Good game)
   const manageScore = (scoreNow) => {
-    const formatDate = (day = new Date()) => {
-      return `${day.getDate()}/${day.getMonth()}/${day.getYear()}`
-    }
-    let scores = localStorage.getItem('scoresTetrisGame')
-    if (scores) {
-      scores = JSON.parse(scores)
-    } else {
-      let obj = {'now': [scoreNow], 'today': [scoreNow, new Date()], 'ever': [scoreNow]}
-      localStorage.setItem('scoresTetrisGame', JSON.stringify(obj))
-    }
-    if (scoreNow > parseFloat(scores.today)) {
-      let now = formatDate()
-      if (now !== scores.today[1]) {
-        // scores.today = [scoreNow, now]
-      }
-    }
-    if (scoreNow > parseFloat(scores.ever)) {
+    // const formatDate = (day = new Date()) => {
+    //   return `${day.getDate()}/${day.getMonth()}/${day.getYear()}`
+    // }
+    // let scores = localStorage.getItem('scoresTetrisGame')
+    // if (scores) {
+    //   scores = JSON.parse(scores)
+    // } else {
+    //   let obj = {'now': [scoreNow], 'today': [scoreNow, new Date()], 'ever': [scoreNow]}
+    //   localStorage.setItem('scoresTetrisGame', JSON.stringify(obj))
+    // }
+    // if (scoreNow > parseFloat(scores.today)) {
+    //   let now = formatDate()
+    //   if (now !== scores.today[1]) {
+    //     // scores.today = [scoreNow, now]
+    //   }
+    // }
+    // if (scoreNow > parseFloat(scores.ever)) {
       // scores.ever = scoreNow
-    }
-    localStorage.setItem('scoresTetrisGame', JSON.stringify(scores))
+    // }
+    // localStorage.setItem('scoresTetrisGame', JSON.stringify(scores))
 
     // document.getElementById('today').innerHTML = scores.today[0]
     // document.getElementById('ever').innerHTML = scores.ever
@@ -164,7 +164,10 @@
 
   const scoreIncreaseHandler = (val) => {
     currScore++
-    if (typeof val === 'number') currScore = val
+    if (typeof val === 'number') {
+      currScore = val
+      if (val === 0) currSpeed = INITIAL_SPEED
+    }
     SCORE_NOW.forEach(el => el.innerHTML = currScore)
     if (val === undefined) {
       clearInterval(gravity)
@@ -189,10 +192,10 @@
 
   manageScore(currScore) //initialize score
 
-  let initial_shape = get_random(Object.keys(SHAPE_TO_COLOR_OBJ))
+  let initial_shape = 'line'//get_random(Object.keys(SHAPE_TO_COLOR_OBJ))
   tetris.shift(initial_shape, SHAPE_TO_COLOR_OBJ[initial_shape])
 
-  let initial_shape2 = get_random(Object.keys(SHAPE_TO_COLOR_OBJ))
+  let initial_shape2 = 'line'//get_random(Object.keys(SHAPE_TO_COLOR_OBJ))
   let lastShape = tetris.shift(initial_shape2, SHAPE_TO_COLOR_OBJ[initial_shape2])
 
   document.addEventListener('keydown', e => {

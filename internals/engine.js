@@ -17,11 +17,11 @@ class Pixel {
     this.width = width
     this.height = height
     this.color = 'none'
-    this.#initializePixel()
+    this.initializePixel()
     this.statut = statut
     this.possibleColors = possibleColors;
   }
-  #initializePixel() {
+  initializePixel() {
     let parentId = this.svg.node().parentElement.id
     let id = `el${parentId}x${this.x}y${this.y}`.replaceAll('.', 'dot')
 
@@ -45,9 +45,9 @@ class Pixel {
     return this.color ? this.color : 'none'
   }
   set fill(color) {
-    if(!this.possibleColors.includes(color) && color !== 'none') throw 'Wrong color'
-    this.color = color
-    this.#initializePixel()
+    if(!this.possibleColors.includes(color) && color !== 'none' && color !== 'white') throw 'Wrong color'
+    this.color = color;
+    this.initializePixel()
   }
   get cast() {
     return this.statut 
@@ -81,7 +81,7 @@ class Group {
     this.flippedCount = 0
   }
 
-  #getPixelAround(pixel, orientation) {
+  getPixelAround(pixel, orientation) {
     let i, j, matrix = this.matrix
     for (i = 0; i < matrix.length; i++) {
       for (j = 0; j < matrix[j].length; j++) {
@@ -103,7 +103,7 @@ class Group {
     }
   }
 
-  #getThan = (center, than) => {
+  getThan = (center, than) => {
     const centerRow = this.matrix.find(row => row.includes(center))
     const thanRow = this.matrix.find(row => row.includes(than))
     const centerCol = centerRow.indexOf(center)
@@ -126,7 +126,7 @@ class Group {
     return obj
   }
 
-  #select(p1, p2) {
+  select(p1, p2) {
     let x1, y1, x2, y2;
     this.matrix.forEach((row, i) => {
       if (row.includes(p1)) {
@@ -156,7 +156,7 @@ class Group {
       let curr = px
       let i
       for (i = 0; i < times; i++) {
-        let node = this.#getPixelAround(curr, wh)
+        let node = this.getPixelAround(curr, wh)
         if (node === undefined) return [curr, true]
         // if (node.fill !== 'none' && !this.group.includes(node)) return [curr, true]
         curr = node
@@ -241,7 +241,7 @@ class Group {
         break 
     }
 
-    const selection = this.#select(a[0], b[0])
+    const selection = this.select(a[0], b[0])
     let futureGroup = [], canBeFlipped = true //TODO: get rid of this canBeFlipped
 
     iterate((curr, tobe) => {
@@ -253,7 +253,7 @@ class Group {
         canBeFlipped = false
 
         //NOTE: potential weak point if view obj has more trues than one
-        let view = this.#getThan(handle, curr)
+        let view = this.getThan(handle, curr)
         view = Object.entries(view).find(prop => prop[1])[0]
 
         if (this.flippedCount < 10) {
@@ -286,7 +286,7 @@ class Group {
   }
 
   move(where) {
-    const getpx = (px, wh) => this.#getPixelAround(px, wh)
+    const getpx = (px, wh) => this.getPixelAround(px, wh)
 
     //make sure that the element position won't exceed the container offset 
     const cont = this.container.node().getBoundingClientRect()
@@ -347,7 +347,7 @@ class Group {
     this.grid = []
     this.screenGrid = []
     this.possibleColors = Object.entries(shapes).map(shape => shape[1].color)
-    this.#initializeGameplay()
+    this.initializeGameplay()
     this.shapes = shapes
     this.spawnZoneCoordinates = [[0, 3], [3, 6]]//[this.grid[0][3], this.grid[3][6]]
     this.state = {
@@ -358,7 +358,7 @@ class Group {
     this.score = score
   }
 
-  #initializeGameplay() {
+  initializeGameplay() {
     this.container.innerHTML = ''
     this.screen.innerHTML = ''
 
@@ -415,6 +415,7 @@ class Group {
     let i, j;
     for (i = 0; i < this.grid.length; i++) { 
       if (rows[i]) {
+
         for (j = 0; j < this.grid[i].length; j++) {
           this.grid[i][j].fill = 'none'
           this.grid[i][j].cast = 'regular'
