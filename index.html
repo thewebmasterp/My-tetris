@@ -66,5 +66,20 @@
   <script src="internals/shapes.js"></script>  
   <script src="internals/engine.js"></script> 
   <script src="controller.js"></script> 
+  <script>
+    //reload the webpage on window resize
+    var resizeTimeout;
+    window.addEventListener('resize', function(event) {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function(){
+        // window.location.reload();
+        // window.location.href = window.location.href
+        console.log('reload!')
+        location.reload(true);
+        setTimeout(location.reload)
+      }, 1500);
+    });
+
+  </script>
 </body>
 </html>

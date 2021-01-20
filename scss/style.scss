@@ -151,20 +151,39 @@ body {
         &#down {
           margin-left: 0;
           margin-right: 0;
-          background-image: url('../arrow.png');
+          // background-image: url('../arrow.png');
+          background-image: url('../buttons/down.png');
           background-position: center;
-          background-size: 40px 40px;
+          background-size: cover;
+          &.clicked {
+            background-image: url('../buttons/down_clicked.png');
+          }
         }
         &#left {
-          background-image: url('../arrow_left.png');
+          // background-image: url('../arrow_left.png');
+          background-image: url('../buttons/left.png');
+          background-size: cover;
+          &.clicked {
+            background-image: url('../buttons/left_clicked.png');
+          }
         }
         &#right {
-          background-image: url('../arrow_right.png');
+          // background-image: url('../arrow_right.png');
+          background-image: url('../buttons/right.png');
+          background-size: cover;
+          &.clicked {
+            background-image: url('../buttons/right_clicked.png');
+          }
         }
         &#flip {
-          background-image: url('../circle.png');
+          // background-image: url('../circle.png');
+          background-image: url('../buttons/switch.png');
+          background-size: cover;
           grid-column: span 3;
           margin-top: 0;
+          &.clicked {
+            background-image: url('../buttons/switch_clicked.png');
+          }
         }
       }
     }

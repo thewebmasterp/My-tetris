@@ -17,6 +17,10 @@
 
 //CONSTANTS:
 
+  //files
+  const SCORE_SOUND = './sounds/score.mp3'
+  const MOVE_SOUND = './sounds/move.mp3'
+
   //fundamental
   const PLAYGROUND = d3.select('#playground svg')
   const SCREEN_NEXT_BLOCK = d3.select('#screen svg')
@@ -66,10 +70,15 @@
   const blinkEl = el => {
     if (finished) {
       finished = false
-      const prevBg = window.getComputedStyle(el).backgroundColor
-      el.style.backgroundColor = 'gray'
+      // const prevBg = window.getComputedStyle(el).backgroundColor
+      // el.style.backgroundColor = 'gray'
+      const audio = new Audio(MOVE_SOUND)
+      audio.volume = 0.2;
+      audio.play()
+      el.classList.add('clicked')
       setTimeout(() => {
-        el.style.backgroundColor = prevBg
+        // el.style.backgroundColor = prevBg
+        el.classList.remove('clicked')
         finished = true
       }, BLINK_DELAY)
     }
@@ -159,14 +168,19 @@
       setTimeout(() => restartAllowed = true, 200) 
       GAME_OVER.style.display = 'block'
     }, GAME_OVER_DELAY)
-    currSpeed = INITIAL_SPEED
+    console.log('current speed - initial speed')
+    // currSpeed = INITIAL_SPEED
   }
 
   const scoreIncreaseHandler = (val) => {
     currScore++
     if (typeof val === 'number') {
       currScore = val
-      if (val === 0) currSpeed = INITIAL_SPEED
+      if (val === 0) {
+        currSpeed = INITIAL_SPEED
+        clearInterval(gravity)
+        gravity = setInterval(fall, currSpeed)
+      }
     }
     SCORE_NOW.forEach(el => el.innerHTML = currScore)
     if (val === undefined) {
@@ -175,6 +189,8 @@
       console.log(`speed updated: ${currSpeed}`)
       gravity = setInterval(fall, currSpeed)
     }
+    const scoreSound = new Audio(SCORE_SOUND)
+    scoreSound.play()
     manageScore(currScore)
   }
 
